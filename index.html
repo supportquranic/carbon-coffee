@@ -551,48 +551,23 @@
 	
 <style id="hero-cup-anim">
 /* ============================================================
-   HERO STAGED ENTRANCE ANIMATION (Minimal Elastic Effect)
-   Sequence:
-   1) Background Text ("FRESHLY BREWED MOMENTS START HERE") comes from bottom
-   2) Splash water image comes from bottom
-   3) Coffee mug comes from bottom, settling with subtle bounce
+   HERO ENTRANCE ANIMATION:
+   1) Background Text: Already present (static, immediate)
+   2) Liquid Splash: Strict transparent PNG, smooth rise from bottom
+   3) Glass/Cup PNG: Smooth buttery entrance from bottom into position
    ============================================================ */
 
-@keyframes heroTextElasticRise {
+@keyframes heroSplashSmoothRise {
   0% {
-    transform: translateY(90px);
+    transform: translateY(100px) scale(0.96);
     opacity: 0;
   }
   65% {
-    transform: translateY(-8px);
+    transform: translateY(-5px) scale(1.008);
     opacity: 1;
   }
-  82% {
-    transform: translateY(3px);
-  }
-  92% {
-    transform: translateY(-1px);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes heroSplashElasticRise {
-  0% {
-    transform: translateY(110px) scale(0.96);
-    opacity: 0;
-  }
-  65% {
-    transform: translateY(-8px) scale(1.01);
-    opacity: 1;
-  }
-  82% {
-    transform: translateY(3px) scale(0.998);
-  }
-  92% {
-    transform: translateY(-1px) scale(1);
+  85% {
+    transform: translateY(1.5px);
   }
   100% {
     transform: translateY(0) scale(1);
@@ -600,20 +575,17 @@
   }
 }
 
-@keyframes heroCupElasticRise {
+@keyframes heroCupSmoothRise {
   0% {
-    transform: translateY(130px) scale(0.92);
+    transform: translateY(120px) scale(0.93);
     opacity: 0;
   }
   65% {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-6px) scale(1.012);
     opacity: 1;
   }
-  82% {
-    transform: translateY(4px) scale(0.995);
-  }
-  92% {
-    transform: translateY(-1px) scale(1);
+  85% {
+    transform: translateY(2px);
   }
   100% {
     transform: translateY(0) scale(1);
@@ -621,10 +593,11 @@
   }
 }
 
-/* 1. Background Text Staged Entrance */
+/* 1. Background Text: ALREADY PRESENT immediately, no movement */
 .framer-191h624 .framer-ss8sxp {
-  animation: heroTextElasticRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both !important;
-  will-change: transform, opacity !important;
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .framer-191h624 .framer-ss8sxp .framer-ei3rhs,
@@ -633,13 +606,13 @@
   transform: none !important;
 }
 
-/* 2. Water / Liquid Splash Staged Entrance */
+/* 2. Water / Liquid Splash: Strict PNG, smooth rise */
 .framer-191h624 .framer-1v476f0 > div[data-framer-background-image-wrapper="true"] {
-  animation: heroSplashElasticRise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both !important;
+  animation: heroSplashSmoothRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both !important;
   will-change: transform, opacity !important;
 }
 
-/* 3. Coffee Mug Staged Entrance + Hover Pop */
+/* 3. Glass / Cup PNG: Smooth entrance + hover pop */
 .framer-gfiikb-container {
   opacity: 1 !important;
 }
@@ -652,7 +625,7 @@
   margin: 14% auto 0 !important;
   cursor: pointer !important;
   filter: drop-shadow(0 18px 28px rgba(45, 20, 5, 0.18)) !important;
-  animation: heroCupElasticRise 1.0s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both !important;
+  animation: heroCupSmoothRise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both !important;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease !important;
   will-change: transform, opacity !important;
 }
@@ -921,7 +894,7 @@ nav.framer-XeLyR .framer-ui18h6 {
   max-height: 60px !important;
 }
 
-/* -- Desktop Navbar Order Now Button: sleek & proportionate to navbar height -- */
+/* -- Desktop Navbar Order Now Button: BROWN with sleek dimensions -- */
 .framer-fvx0vb-container {
   display: flex !important;
   align-items: center !important;
@@ -934,16 +907,21 @@ nav.framer-XeLyR .framer-ui18h6 {
   max-height: 36px !important;
   padding: 0 !important;
   border-radius: 999px !important;
+  background-color: var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15)) !important;
+  background: #7D2C0F !important;
+  color: #ffffff !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 2px 8px rgba(255, 131, 66, 0.25) !important;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+  box-shadow: 0 2px 8px rgba(125, 44, 15, 0.3) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.2s ease !important;
 }
 
 .framer-fvx0vb-container a.framer-YxVON:hover {
+  background: #62220b !important;
+  background-color: #62220b !important;
   transform: scale(1.04) translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(255, 131, 66, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(125, 44, 15, 0.5) !important;
 }
 
 .framer-fvx0vb-container .framer-77qwof {
@@ -975,12 +953,15 @@ nav.framer-XeLyR .framer-ui18h6 {
   --line-height-abs: 16px !important;
   letter-spacing: 0.8px !important;
   font-weight: 600 !important;
+  color: #ffffff !important;
+  --text: #ffffff !important;
   text-shadow: none !important;
 }
 
 .framer-fvx0vb-container p[class*="rolling-text-inner"] span {
   font-size: 13px !important;
   line-height: 16px !important;
+  color: #ffffff !important;
 }
 
 /* -- Mobile navbar compact -- */
@@ -1099,7 +1080,7 @@ nav.framer-XeLyR .framer-ui18h6 {
       line-height: 20px;
       color: var(--text);
     }
-  </style></div><!--/$--></div></a><!--/$--></div><!--/$--></div></div></nav></div></div><style data-framer-html-style>html body { background: var(--token-b96f8563-36eb-4b6e-846c-8d3342f2f893, rgb(249, 238, 220)); }</style><div data-framer-root class="framer-FWC1e framer-AMUW0 framer-Jt8aK framer-CBQAK framer-Nhsqi framer-t6yLe framer-Ok3pu framer-sYFKd framer-72rtr7" style="min-height:100vh;width:auto;display:contents"><div class="framer-1pabst7-container"><!--$--><div></div><!--/$--></div><main class="framer-1446ee3" data-framer-name="Main"><section class="framer-191h624" data-framer-name="Hero Section"><div class="framer-17rxpwj" data-framer-name="Content"><div class="framer-ss8sxp" data-framer-name="Title Wrapper"><div class="framer-ei3rhs" data-framer-appear-id="ei3rhs" data-framer-name="TITLE" data-framer-component-type="RichTextContainer" style="opacity:0.001;transform:translateX(-250px)"><h1 class="framer-text framer-styles-preset-lj6rva" data-styles-preset="YtFXi_l2J" dir="auto"><span style="--framer-text-color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15))" class="framer-text">freshly Brewed </span></h1></div><div class="framer-1fz5x2b" data-framer-appear-id="1fz5x2b" data-framer-name="TITLE" data-framer-component-type="RichTextContainer" style="opacity:0.001;transform:translateX(250px)"><h1 class="framer-text framer-styles-preset-lj6rva" data-styles-preset="YtFXi_l2J" dir="auto"><span style="--framer-text-color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15))" class="framer-text">Moments Start Here</span></h1></div></div><div class="framer-15f2qpl" data-framer-name="Image Wrapper"><div class="ssr-variant hidden-1qncyho"><figure as="figure" class="framer-1v476f0" data-framer-name="Image"><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0" data-framer-background-image-wrapper="true"><img loading="lazy" decoding="async" width="4096" height="1712" sizes="(min-width: 1440px) max(min(max(min(100vw, 1440px), 1px), 1440px) - 368px, 1px), (max-width: 809.98px) max(min(min(max(min(100vw, 1440px), 1px), 1440px) - 40px, 390px), 1px), (min-width: 810px) and (max-width: 1439.98px) max(min(max(min(100vw, 1440px), 1px), 810px) - 200px, 1px)" srcset="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 512w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 1024w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 2048w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 4096w" src="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp" alt="Dynamic brown liquid splash" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"></div><div class="framer-gfiikb-container" data-code-component-plugin-id="63896a" data-framer-appear-id="gfiikb" data-framer-name="Coffee Cup ☕" name="Coffee Cup ☕" style="opacity:0.001;transform:translateY(150px)"><!--$--><img class="hero-cup-img" src="/assets/hero-cup.webp" fetchpriority="high" loading="eager" alt="Carbon Coffee Cup"><!--/$--></div></figure></div><div class="ssr-variant hidden-72rtr7 hidden-h10n0"><figure as="figure" class="framer-1v476f0" data-framer-name="Image"><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0" data-framer-background-image-wrapper="true"><img loading="lazy" decoding="async" width="4096" height="1712" sizes="(min-width: 1440px) max(min(max(min(100vw, 1440px), 1px), 1440px) - 368px, 1px), (max-width: 809.98px) max(min(min(max(min(100vw, 1440px), 1px), 1440px) - 40px, 390px), 1px), (min-width: 810px) and (max-width: 1439.98px) max(min(max(min(100vw, 1440px), 1px), 810px) - 200px, 1px)" srcset="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 512w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 1024w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 2048w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp 4096w" src="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.webp" alt="Dynamic brown liquid splash" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"></div><div class="framer-gfiikb-container" data-code-component-plugin-id="63896a" data-framer-appear-id="gfiikb" data-framer-name="Coffee Cup ☕" name="Coffee Cup ☕" style="opacity:0.001;transform:translateX(-50%) translateY(80px)"><!--$--><img class="hero-cup-img" src="/assets/hero-cup.webp" fetchpriority="high" loading="eager" alt="Carbon Coffee Cup"><!--/$--></div></figure></div></div></div></section><section class="framer-wftlvt" data-framer-name="About Section" style="will-change:transform;opacity:0;transform:translateY(50px)"><div class="framer-6qtw4d" data-framer-name="Content"><div class="framer-7rnnlp" data-framer-name="Nav Contact" data-framer-component-type="RichTextContainer" style="transform:none"><h5 class="framer-text framer-styles-preset-1nx6pkn" data-styles-preset="fvVtDa27X" dir="auto" style="--framer-text-alignment:center;--framer-text-color:var(--token-1b954fc6-275c-491d-89d1-beb02399b60c, rgb(255, 131, 66))">about beanro</h5></div><div class="framer-4sfm4p-container hidden-h10n0 hidden-1qncyho" data-framer-name="Text Wrape Desktop" name="Text Wrape Desktop"><!--$--><h1 class="framer-text-wrap-container" style="font-family:&quot;Boldonse&quot;, &quot;Boldonse Placeholder&quot;, sans-serif;font-size:48px;font-style:normal;font-weight:400;letter-spacing:-2px;line-height:150%;color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15));margin:0;display:block;white-space:pre-wrap;text-align:center;user-select:none;text-decoration:none;text-wrap:wrap;text-transform:uppercase;width:100%"><style>
+  </style></div><!--/$--></div></a><!--/$--></div><!--/$--></div></div></nav></div></div><style data-framer-html-style>html body { background: var(--token-b96f8563-36eb-4b6e-846c-8d3342f2f893, rgb(249, 238, 220)); }</style><div data-framer-root class="framer-FWC1e framer-AMUW0 framer-Jt8aK framer-CBQAK framer-Nhsqi framer-t6yLe framer-Ok3pu framer-sYFKd framer-72rtr7" style="min-height:100vh;width:auto;display:contents"><div class="framer-1pabst7-container"><!--$--><div></div><!--/$--></div><main class="framer-1446ee3" data-framer-name="Main"><section class="framer-191h624" data-framer-name="Hero Section"><div class="framer-17rxpwj" data-framer-name="Content"><div class="framer-ss8sxp" data-framer-name="Title Wrapper"><div class="framer-ei3rhs" data-framer-appear-id="ei3rhs" data-framer-name="TITLE" data-framer-component-type="RichTextContainer" style="opacity:0.001;transform:translateX(-250px)"><h1 class="framer-text framer-styles-preset-lj6rva" data-styles-preset="YtFXi_l2J" dir="auto"><span style="--framer-text-color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15))" class="framer-text">freshly Brewed </span></h1></div><div class="framer-1fz5x2b" data-framer-appear-id="1fz5x2b" data-framer-name="TITLE" data-framer-component-type="RichTextContainer" style="opacity:0.001;transform:translateX(250px)"><h1 class="framer-text framer-styles-preset-lj6rva" data-styles-preset="YtFXi_l2J" dir="auto"><span style="--framer-text-color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15))" class="framer-text">Moments Start Here</span></h1></div></div><div class="framer-15f2qpl" data-framer-name="Image Wrapper"><div class="ssr-variant hidden-1qncyho"><figure as="figure" class="framer-1v476f0" data-framer-name="Image"><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0" data-framer-background-image-wrapper="true"><img loading="lazy" decoding="async" width="4096" height="1712" sizes="(min-width: 1440px) max(min(max(min(100vw, 1440px), 1px), 1440px) - 368px, 1px), (max-width: 809.98px) max(min(min(max(min(100vw, 1440px), 1px), 1440px) - 40px, 390px), 1px), (min-width: 810px) and (max-width: 1439.98px) max(min(max(min(100vw, 1440px), 1px), 810px) - 200px, 1px)" srcset="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 512w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 1024w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 2048w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 4096w" src="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png" alt="Dynamic brown liquid splash" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"></div><div class="framer-gfiikb-container" data-code-component-plugin-id="63896a" data-framer-appear-id="gfiikb" data-framer-name="Coffee Cup ☕" name="Coffee Cup ☕" style="opacity:0.001;transform:translateY(150px)"><!--$--><img class="hero-cup-img" src="/assets/hero-cup.png" fetchpriority="high" loading="eager" alt="Carbon Coffee Cup"><!--/$--></div></figure></div><div class="ssr-variant hidden-72rtr7 hidden-h10n0"><figure as="figure" class="framer-1v476f0" data-framer-name="Image"><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0" data-framer-background-image-wrapper="true"><img loading="lazy" decoding="async" width="4096" height="1712" sizes="(min-width: 1440px) max(min(max(min(100vw, 1440px), 1px), 1440px) - 368px, 1px), (max-width: 809.98px) max(min(min(max(min(100vw, 1440px), 1px), 1440px) - 40px, 390px), 1px), (min-width: 810px) and (max-width: 1439.98px) max(min(max(min(100vw, 1440px), 1px), 810px) - 200px, 1px)" srcset="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 512w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 1024w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 2048w, /assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png 4096w" src="/assets/framerusercontent.com/images/snawRh3kduwUM969MzVgQuJ8JM.png" alt="Dynamic brown liquid splash" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"></div><div class="framer-gfiikb-container" data-code-component-plugin-id="63896a" data-framer-appear-id="gfiikb" data-framer-name="Coffee Cup ☕" name="Coffee Cup ☕" style="opacity:0.001;transform:translateX(-50%) translateY(80px)"><!--$--><img class="hero-cup-img" src="/assets/hero-cup.png" fetchpriority="high" loading="eager" alt="Carbon Coffee Cup"><!--/$--></div></figure></div></div></div></section><section class="framer-wftlvt" data-framer-name="About Section" style="will-change:transform;opacity:0;transform:translateY(50px)"><div class="framer-6qtw4d" data-framer-name="Content"><div class="framer-7rnnlp" data-framer-name="Nav Contact" data-framer-component-type="RichTextContainer" style="transform:none"><h5 class="framer-text framer-styles-preset-1nx6pkn" data-styles-preset="fvVtDa27X" dir="auto" style="--framer-text-alignment:center;--framer-text-color:var(--token-1b954fc6-275c-491d-89d1-beb02399b60c, rgb(255, 131, 66))">about beanro</h5></div><div class="framer-4sfm4p-container hidden-h10n0 hidden-1qncyho" data-framer-name="Text Wrape Desktop" name="Text Wrape Desktop"><!--$--><h1 class="framer-text-wrap-container" style="font-family:&quot;Boldonse&quot;, &quot;Boldonse Placeholder&quot;, sans-serif;font-size:48px;font-style:normal;font-weight:400;letter-spacing:-2px;line-height:150%;color:var(--token-a2aa6bc6-1ec8-4889-85e4-e9af372dd638, rgb(125, 44, 15));margin:0;display:block;white-space:pre-wrap;text-align:center;user-select:none;text-decoration:none;text-wrap:wrap;text-transform:uppercase;width:100%"><style>
             .framer-text-wrap-container div {
                 display: inline-block !important;
                 vertical-align: inherit;
