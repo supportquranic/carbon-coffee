@@ -755,6 +755,31 @@ nav.framer-XeLyR .framer-ui18h6 {
 }
 </style>
 
+<style id="carbon-appear-fix">
+/* ── Fix: Show Framer sections immediately (don't wait for JS animations) ──
+   Framer hides all below-fold sections with opacity:0 + translateY(50px)
+   until JS IntersectionObserver fires. This makes them visible right away.
+   JS will still re-animate them when scrolled into view.
+*/
+
+/* Any Framer element waiting for appear animation */
+[data-framer-appear-id] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Elements with inline will-change:transform + opacity:0 (Framer pattern) */
+[style*="will-change:transform"],
+[style*="will-change: transform"] {
+  opacity: 1 !important;
+}
+
+/* Container divs hidden with opacity:0 translateY */
+[style*="opacity:0"],
+[style*="opacity: 0"] {
+  opacity: 1 !important;
+}
+</style>
 <style id="carbon-master-overrides">
 /* ============================================================
    CARBON COFFEE - Master CSS Overrides
