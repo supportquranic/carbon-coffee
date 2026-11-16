@@ -4,32 +4,6 @@
 <html lang="en" data-redirect-timezone="1" dir="ltr">
 <head>
 
-<style id="carbon-fast-fonts">
-/* ── Instant font: Override Framer CSS vars before JS runs ── */
-:root {
-  /* These vars are set by Framer JS; preempt them with system stack */
-  --framer-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --framer-font-family-preview: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-/* Prevent invisible text during font swap */
-.framer-text,
-[data-framer-component-type="Text"] span,
-[data-framer-component-type="Text"] p,
-[data-framer-component-type="Text"] h1,
-[data-framer-component-type="Text"] h2,
-[data-framer-component-type="Text"] h3,
-[data-framer-component-type="Text"] h4 {
-  font-display: swap !important;
-  visibility: visible !important;
-}
-
-/* Body default to system font immediately */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
-}
-</style>
-
   <link rel="preload" href="/assets/fonts.gstatic.com/s/bayon/v36/9XUrlJNmn0LPFm-uMBc.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/assets/fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZ9hiA.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/assets/fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mj0QiaWy5S.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -784,15 +758,7 @@ nav.framer-XeLyR .framer-ui18h6 {
 <style id="carbon-master-overrides">
 /* ============================================================
    CARBON COFFEE - Master CSS Overrides
-   Applied: Navbar compact, Blog hidden, System fonts,
-            Mobile 2x2 cards, No rating on mobile
    ============================================================ */
-
-/* -- System fonts for fast load (no FOIT) -- */
-*, *::before, *::after {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               Helvetica, Arial, sans-serif !important;
-}
 
 /* -- Hide Blog nav link (desktop & mobile) -- */
 .framer-1a25ef6,
@@ -806,16 +772,12 @@ nav.framer-XeLyR .framer-ui18h6 {
 }
 
 /* -- Compact navbar desktop -- */
-.framer-ui18h6,
-nav.framer-XeLyR {
-  min-height: unset !important;
-}
 .framer-lvuutz {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
-/* navbar container height */
+/* -- Compact navbar height -- */
 .framer-XeLyR {
   min-height: 52px !important;
   max-height: 60px !important;
@@ -846,7 +808,6 @@ nav.framer-XeLyR {
 
 /* -- Mobile 2x2 Product Cards -- */
 @media (max-width: 809.98px) {
-  /* Products grid: 2 columns */
   .framer-w86kf,
   [data-framer-name="Products Grid"],
   .framer-1yoijgs {
@@ -856,7 +817,6 @@ nav.framer-XeLyR {
     padding: 0 10px !important;
   }
 
-  /* Individual card sizing */
   .framer-w86kf > *,
   .framer-1yoijgs > * {
     width: 100% !important;
@@ -864,24 +824,10 @@ nav.framer-XeLyR {
     max-width: unset !important;
   }
 
-  /* Card image height */
   .framer-16v7lom,
   .framer-9zzhlj {
     height: 120px !important;
     min-height: 120px !important;
-  }
-
-  /* Card title font */
-  .framer-6uy8rv,
-  .framer-7wq53h {
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
-
-  /* Card price font */
-  .framer-1ldfm7w,
-  .framer-5btmd4 {
-    font-size: 11px !important;
   }
 
   /* Hide rating on mobile cards */
@@ -905,11 +851,6 @@ nav.framer-XeLyR {
   backdrop-filter: blur(14px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
   border-bottom: 1px solid rgba(125, 44, 15, 0.08) !important;
-}
-
-/* -- Performance: prevent layout shift from lazy images -- */
-img[loading="lazy"] {
-  content-visibility: auto;
 }
 </style>
 
