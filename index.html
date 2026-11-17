@@ -551,10 +551,11 @@
 	
 <style id="hero-cup-anim">
 /* ============================================================
-   HERO ENTRANCE ANIMATION:
+   HERO ENTRANCE ANIMATION & OBJECT PLACEMENT:
    1) Background Text: Already present (static, immediate)
    2) Liquid Splash: Strict transparent PNG, smooth rise from bottom
    3) Glass/Cup PNG: Smooth buttery entrance from bottom into position
+   4) Mobile Hero Placement: 100% matched to Desktop (centered cup nested in splash)
    ============================================================ */
 
 @keyframes heroSplashSmoothRise {
@@ -633,6 +634,77 @@
 .hero-cup-img:hover {
   transform: scale(1.06) translateY(-8px) !important;
   filter: drop-shadow(0 26px 36px rgba(45, 20, 5, 0.28)) !important;
+}
+
+/* 4. Mobile Mode Object Placement (Matches Desktop) */
+@media (max-width: 809.98px) {
+  /* Center the image wrapper and splash figure */
+  .framer-191h624 .framer-17rxpwj {
+    padding: 130px 16px 0 !important;
+  }
+
+  .framer-191h624 .framer-15f2qpl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    margin: 20px auto 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .framer-191h624 .framer-1v476f0 {
+    width: 100% !important;
+    max-width: 400px !important;
+    aspect-ratio: 2.44755 !important;
+    position: relative !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  /* Liquid Splash Image: Fills figure cleanly */
+  .framer-191h624 .framer-1v476f0 > div[data-framer-background-image-wrapper="true"] {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Coffee Cup Container: Dead Center, nestled in the splash bowl */
+  .framer-191h624 .framer-gfiikb-container,
+  .framer-191h624 [data-framer-appear-id="gfiikb"],
+  .framer-191h624 [data-framer-name="Coffee Cup ☕"] {
+    position: absolute !important;
+    top: -38px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 135px !important;
+    height: 195px !important;
+    aspect-ratio: unset !important;
+    transform: none !important;
+    z-index: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+  }
+
+  /* Coffee Cup Image on Mobile */
+  .framer-191h624 .hero-cup-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 135px !important;
+    max-height: 195px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    pointer-events: auto !important;
+  }
 }
 </style>
 
